@@ -1,8 +1,13 @@
-import type { CspDirectives } from "../../types";
-import type { CtxHeaders } from "./types";
-import { CSP_HEADER, CSP_HEADER_REPORT_ONLY } from "../../constants";
-import { fromCspContent, toCspContent } from "../../utils";
-import { deleteCtxHeader, getCtxReqHeader, getCtxResHeader, setCtxHeader } from "./headers";
+import type { CspDirectives } from '../../types';
+import type { CtxHeaders } from './types';
+import { CSP_HEADER, CSP_HEADER_REPORT_ONLY } from '../../constants';
+import { fromCspContent, toCspContent } from '../../utils';
+import {
+  deleteCtxHeader,
+  getCtxReqHeader,
+  getCtxResHeader,
+  setCtxHeader,
+} from './headers';
 
 const getCspFromHeader = (ctx: CtxHeaders, getter) => {
   if (ctx.req) {
@@ -16,7 +21,7 @@ const getCspFromHeader = (ctx: CtxHeaders, getter) => {
     }
     if (cspContentReportOnly) {
       return {
-        directives: fromCspContent(cspContent),
+        directives: fromCspContent(cspContentReportOnly),
         reportOnly: true,
       };
     }
